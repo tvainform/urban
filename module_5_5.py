@@ -79,6 +79,8 @@ class UrTube:
         for video in self.videos:
             if Video(string, 0) in video:
                 _list.append(video.title)
+        if len(_list) == 0:
+            print('Видео не найдено')
         return _list
 
     def watch_video(self, name):
@@ -108,6 +110,8 @@ ur.add(v1, v2)
 # Проверка поиска
 print(ur.get_videos('лучший'))
 print(ur.get_videos('ПРОГ'))
+# Проверка поиска несуществующего видео
+print(ur.get_videos('123123'))
 
 # Проверка на вход пользователя и возрастное ограничение
 ur.watch_video('Для чего девушкам парень программист?')
