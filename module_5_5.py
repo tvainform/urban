@@ -3,7 +3,7 @@ from time import sleep
 class User:
     def __init__(self, nickname, password, age):
         self.nickname = nickname
-        self.password = password
+        self.password = hash(password)
         self.age = age
 
     def __repr__(self):
@@ -14,7 +14,7 @@ class User:
 
     def __eq__(self, other):
         if isinstance(other.password, str) and isinstance(other, User):
-            return hash(self.password) == hash(other.password)
+            return self.password == other.password
         return False
 
     def __lt__(self, other):
@@ -46,7 +46,7 @@ class UrTube:
 
     def log_in(self, nickname, password):
         for user in self.users:
-            if user.nickname == nickname and user.password == password:
+            if user.nickname == nickname and user.password == hash(password):
                 self.current_user = user
 
     def register(self, nickname, password, age):
