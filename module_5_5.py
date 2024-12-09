@@ -23,11 +23,11 @@ class User:
         return False
 
 class Video:
-    time_now = 0
     def __init__(self, *args, **kwargs):
         self.title = args[0]
         self.duration = args[1]
         self.adult_mode = kwargs.get('adult_mode')
+        self.time_now = 0
 
     def __eq__(self, other):
         if isinstance(other.title, str) and isinstance(other, Video):
