@@ -70,6 +70,9 @@ class UrTube:
         for i in args:
             if i not in self.videos:
                 self.videos.append(i)
+                print('Видео успешно добавлено')
+            else:
+                print('Такое видео уже существует')
 
     def get_videos(self, string):
         _list = []
@@ -119,3 +122,6 @@ print(ur.current_user)
 
 # Попытка воспроизведения несуществующего видео
 ur.watch_video('Лучший язык программирования 2024 года!')
+
+# Попытка добавить существующее видео
+ur.add(v1)
