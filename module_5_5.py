@@ -46,8 +46,10 @@ class UrTube:
 
     def log_in(self, nickname, password):
         for user in self.users:
-            if user.nickname == nickname and user.password == hash(password):
+            if user.nickname == nickname and user.password == password:
                 self.current_user = user
+                return
+        print('Введен неверный логин и/или пароль')
 
     def register(self, nickname, password, age):
         checker = False
@@ -59,7 +61,7 @@ class UrTube:
             print(f"Пользователь {nickname} уже существует")
         else:
             self.users.append(User(nickname, password, age))
-            self.log_in(nickname, password)
+            self.log_in(nickname, hash(password))
 
     def log_out(self):
         self.current_user = None
