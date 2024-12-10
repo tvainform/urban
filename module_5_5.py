@@ -1,3 +1,4 @@
+from sys import flags
 from time import sleep
 
 class User:
@@ -85,17 +86,17 @@ class UrTube:
 
     def watch_video(self, name):
         if self.current_user is not None:
-            if self.current_user < 18:
-                print("Вам нет 18 лет, пожалуйста покиньте страницу")
-            else:
-                for i in self.videos:
-                    if name == i.title:
+            for i in self.videos:
+                if name == i.title:
+                    if i.adult_mode and self.current_user < 18:
+                        print("Вам нет 18 лет, пожалуйста покиньте страницу")
+                    else:
                         while i.time_now < i.duration:
                             i.time_now += 1
                             print(i.time_now, end=' ')
                             sleep(1)
                         print('Конец видео')
-                        break
+                    break
         else:
             print("Войдите в аккаунт, чтобы смотреть видео")
 
