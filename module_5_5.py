@@ -96,7 +96,8 @@ class UrTube:
                             print(i.time_now, end=' ')
                             sleep(1)
                         print('Конец видео')
-                    break
+                    return
+            print('Видео для просмотра не найдено')
         else:
             print("Войдите в аккаунт, чтобы смотреть видео")
 
