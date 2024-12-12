@@ -47,7 +47,7 @@ class UrTube:
 
     def log_in(self, nickname, password):
         for user in self.users:
-            if user.nickname == nickname and user.password == password:
+            if user.nickname == nickname and user.password == hash(password):
                 self.current_user = user
                 return
         print('Введен неверный логин и/или пароль')
