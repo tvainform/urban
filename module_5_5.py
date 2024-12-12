@@ -62,7 +62,7 @@ class UrTube:
             print(f"Пользователь {nickname} уже существует")
         else:
             self.users.append(User(nickname, password, age))
-            self.log_in(nickname, hash(password))
+            self.log_in(nickname, password)
 
     def log_out(self):
         self.current_user = None
