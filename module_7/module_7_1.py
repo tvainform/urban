@@ -1,5 +1,4 @@
 import os.path
-from pprint import pprint
 
 class Product:
     def __init__(self, name, weight, category):
