@@ -1,4 +1,5 @@
 # Задача "Найдёт везде":
+import re
 
 class WordsFinder:
     def __init__(self, *names):
@@ -8,12 +9,12 @@ class WordsFinder:
         all_words = {}
         for name in self.file_names:
             with open(name, encoding='utf-8') as file:
-                s = ''
+                words = []
                 for line in file:
-                    for char in line:
-                        if not char in [',', '.', '=', '!', '?', ';', ':', ' - ']:
-                            s += char.lower()
-                    all_words[name] = s.split()
+                    line = line.replace(' - ', ' ')
+                    line = re.sub('[,.!?=;:]', '', line)
+                    words.extend(line.lower().split())
+            all_words[name] = words
         return all_words
 
     def find(self, word):
